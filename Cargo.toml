@@ -1,0 +1,7 @@
+[package]
+name = "passwordgenerator"
+version = "0.1.0"
+authors = ["Ruszczyk, Matthew <mruszczyk@rednucleus.com>"]
+
+[dependencies]
+rand = "0.3.15"
