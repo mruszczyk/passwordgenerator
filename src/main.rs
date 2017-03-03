@@ -1,9 +1,7 @@
 extern crate rand;
 
-
 use std::io;
-use rand::{thread_rng, Rng};
-
+use rand::{OsRng, Rng};
 
 fn main() {
     println!("Generate a new password!");
@@ -35,7 +33,13 @@ fn main() {
 }
 
 fn gen_pass(length: usize) -> String {
-    let pass: String = thread_rng().gen_ascii_chars().take(length).collect();
+
+    let mut rng = match OsRng::new() {
+        Ok(g) => g,
+        Err(e) => panic!("Failed to obtain OS RNG: {}", e)
+    };
+
+    let pass: String = rng.gen_ascii_chars().take(length).collect();
 
     return pass;
 
