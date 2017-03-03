@@ -28,8 +28,6 @@ fn main() {
     let pass = gen_pass(parsed);
 
     println!("{}", pass);
-
-
 }
 
 fn gen_pass(length: usize) -> String {
