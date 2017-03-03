@@ -1,5 +1,6 @@
 extern crate rand;
 
+
 use std::io;
 use rand::{thread_rng, Rng};
 
@@ -16,15 +17,17 @@ fn main() {
 
     let trimmed = input.trim();
 
-    match trimmed.parse::<usize>() {
+    let parsed = match trimmed.parse::<usize>() {
         Ok(i) => {
-            println!("Your integer input: {}", i)
-            trimmed
+            i
         },
-        Err(..) => println!("This was not an integer: {}", trimmed)
+        Err(..) => {
+            println!("This was not an integer: {}", trimmed);
+            return;
+        },
     };
 
-    let pass = gen_pass(trimmed);
+    let pass = gen_pass(parsed);
 
     println!("{}", pass);
 
